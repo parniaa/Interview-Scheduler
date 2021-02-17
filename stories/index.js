@@ -10,6 +10,15 @@ import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
+import Appointment from "components/Appointment/index";
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
+import Show from "components/Appointment/Show";
+import Confirm from "components/Appointment/Confirm";
+import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
+
+
 
 storiesOf("Button", module)
   .addParameters({
@@ -100,6 +109,7 @@ storiesOf("Button", module)
         />
       ));
       
+      
     
       const interviewers = [
         { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
@@ -127,4 +137,28 @@ storiesOf("Button", module)
             setInterviewer={action("setInterviewer")}
           />
         ));
+storiesOf("Appointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+  })
+  .add("Appointment", () => <Appointment />)
+  .add("Appointment with Time", () => <Appointment time="12pm" />)
+  .add("Header", () => <Header time="12pm" />)
+  .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+  .add("Show", () => (
+    <Show onEdit={action("onEdit")} onDelete={action("onDelete")} />
+  ))
+  .add("Confrim", () => (
+    <Confirm onConfirm={action("onConfirm")} onCancel={action("onCancel")} />
+  ))
+  .add("Status", () => <Status message={"Deleting your appointment"} />)
+  .add("Error", () => (
+    <Error
+      message={"Could not delete your appiontment"}
+      onClose={action("onClose")}
+    />
+  ));
+
+
+
       
