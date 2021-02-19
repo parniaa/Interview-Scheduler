@@ -47,8 +47,8 @@ const myMappedApp = appointments.map((app) => {
 });
 
 export default function Application(props) {
-  const [days, setDays] = useState([]);
-  const [day, setDay] = useState("Monday");
+  // const [days, setDays] = useState([]);
+  // const [day, setDay] = useState("Monday");
 
   const [state, setState] = useState({
     day: "Monday",
@@ -61,7 +61,7 @@ export default function Application(props) {
   useEffect(() => {
     const url = "http://localhost:8001/api/days";
     axios.get(url).then((response) => {
-      setDays(response.data);
+      setState.days(response.data);
       // console.log("this is the res data", response.data);
     });
   }, []);
@@ -80,7 +80,7 @@ export default function Application(props) {
           <DayList
     days={state.days}
     day={state.day}
-    setDay={}
+    setDay={setState.day}
 />
 
         </nav>
