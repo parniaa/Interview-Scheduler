@@ -50,6 +50,14 @@ export default function Application(props) {
   const [days, setDays] = useState([]);
   const [day, setDay] = useState("Monday");
 
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    appointments: {}
+  });
+  
+
   useEffect(() => {
     const url = "http://localhost:8001/api/days";
     axios.get(url).then((response) => {
@@ -68,7 +76,13 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={days} day={day} setDay={setDay} />
+
+          <DayList
+    days={state.days}
+    day={state.day}
+    setDay={}
+/>
+
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
