@@ -28,15 +28,32 @@ const state = {
   },
 };
 
-const getAppointmentsForDay = (state, day) => {
+export function  getAppointmentsForDay  (state, day)  {
   if (state.days.length === 0) {
     return [];
   }
   const found = state.days.find((dayObject) => dayObject.name === day);
   const foundMap = found.appointments.map((id) => state.appointments[id]);
 
-  console.log("this is FM", foundMap);
   return foundMap;
 };
 
-getAppointmentsForDay(state, "Monday");
+
+
+export function getInterview(state, interview) {
+if (!interview) {
+  return null;
+}
+
+let interviewer = interview.interviewer;
+interviewer = interviewer.toString();
+
+for (const key in state.interviewers) {
+  if (key === interviewer) {
+    return {
+      interviewer: state.interviewers[key],
+      student: interview.student,
+    };
+  }
+}
+}
