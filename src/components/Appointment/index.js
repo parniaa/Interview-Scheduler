@@ -54,7 +54,7 @@ export default function Appointment(props){
     {mode === ERROR_DELETE && <Error message="Could not delete appointment." onClose={() => transition(SHOW)}/>}
     {mode === ERROR_SAVE && <Error message="Could not save appointment." onClose={() => transition(EMPTY)}/>}
     {mode === EMPTY && <Empty onAdd={() => transition(CREATE)}/>}
-    {mode === SHOW && <Show student={props.interview.student} interviewer={props.interview.interviewers} onDelete={() => transition(CONFIRM)} onEdit={() => transition(EDIT)}/>}
+    {mode === SHOW && <Show student={props.interview.student} interviewer={props.interview.interviewer} onDelete={() => transition(CONFIRM)} onEdit={() => transition(EDIT)}/>}
   </article>);
 }
 
